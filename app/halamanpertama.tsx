@@ -9,7 +9,7 @@ export default function HalamanPertama() {
         <div className="flex items-center gap-3">
           <div className="w-3 h-3 bg-[#1A1A1A] rounded-sm" />
           <span className="font-medium tracking-tight text-sm uppercase text-[#4A4A45]">
-            SMA Negeri X
+            SMA Negeri 1 Nusantara
           </span>
         </div>
         <nav className="text-sm font-medium text-[#6A6A60] flex items-center gap-6">
@@ -54,7 +54,7 @@ export default function HalamanPertama() {
               </div>
               <div>
                 <h3 className="text-xl font-semibold text-[#111111] mb-1">
-                  Login User
+                  Registrasi User
                 </h3>
                 <p className="text-sm text-[#6A6A60]">
                   Akses materi, nilai, dan absensi harian.
@@ -63,7 +63,7 @@ export default function HalamanPertama() {
             </Link>
 
             <Link
-              href="/login/admin"
+              href="/admin/login"
               className="group p-6 bg-white border border-[#E2E2DF] rounded-[10px] hover:border-[#1A1A1A] transition-all flex flex-col justify-between gap-6"
             >
               <div className="flex justify-between items-start">
@@ -115,7 +115,7 @@ export default function HalamanPertama() {
 
       {/* Footer */}
       <footer className="w-full max-w-7xl mx-auto px-6 py-8 border-t border-[#EBEBE8] flex flex-col sm:flex-row justify-between items-center text-xs text-[#7A7A70]">
-        <p>&copy; 2026 SMA Negeri x. Seluruh hak cipta dilindungi.</p>
+        <p>&copy; 2026 SMA Negeri 1 Nusantara. Seluruh hak cipta dilindungi.</p>
         <div className="flex gap-6 mt-4 sm:mt-0">
           <Link href="/privacy" className="hover:text-[#1A1A1A]">Kebijakan Privasi</Link>
           <Link href="/terms" className="hover:text-[#1A1A1A]">Ketentuan Layanan</Link>
