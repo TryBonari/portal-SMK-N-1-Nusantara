@@ -1,20 +1,58 @@
-export default function AdminDashboardPage() {
+import { prisma } from "@/lib/prisma";
+
+export const revalidate = 0;
+
+export default async function AdminDashboardPage() {
+  let totalStudents = 0;
+  let grade10Count = 0;
+  let grade11Count = 0;
+  let grade12Count = 0;
+
+  try {
+    totalStudents = await prisma.user?.count({
+      where: { role: "USER" },
+    }) || 0;
+
+    grade10Count = await prisma.user?.count({
+      where: {
+        role: "USER",
+        class: { grade: 10 },
+      },
+    }) || 0;
+
+    grade11Count = await prisma.user?.count({
+      where: {
+        role: "USER",
+        class: { grade: 11 },
+      },
+    }) || 0;
+
+    grade12Count = await prisma.user?.count({
+      where: {
+        role: "USER",
+        class: { grade: 12 },
+      },
+    }) || 0;
+  } catch (err) {
+    console.error("Error fetching student counts:", err);
+  }
+
   const kelasStats = [
     {
       title: "Kelas 10",
-      value: 0,
+      value: grade10Count,
       description: "Peserta didik aktif pada tingkat 10.",
       tag: "Kelas 10",
     },
     {
       title: "Kelas 11",
-      value: 0,
+      value: grade11Count,
       description: "Peserta didik aktif pada tingkat 11.",
       tag: "Kelas 11",
     },
     {
       title: "Kelas 12",
-      value: 0,
+      value: grade12Count,
       description: "Peserta didik aktif pada tingkat 12.",
       tag: "Kelas 12",
     },
@@ -61,7 +99,7 @@ export default function AdminDashboardPage() {
           <div className="space-y-2 max-w-lg">
             <h3 className="text-lg font-semibold text-[#111111]">Siswa Aktif</h3>
             <h2 className="text-4xl font-semibold text-[#111111] tracking-tight">
-              0 <span className="text-base font-normal text-[#6A6A60]">Siswa</span>
+              {totalStudents} <span className="text-base font-normal text-[#6A6A60]">Siswa</span>
             </h2>
             <p className="text-xs sm:text-sm text-[#6A6A60] leading-relaxed pt-1">
               Jumlah keseluruhan peserta didik yang terdaftar resmi dan aktif mengikuti kegiatan belajar mengajar semester ini.

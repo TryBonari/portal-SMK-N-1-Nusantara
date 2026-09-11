@@ -6,7 +6,6 @@ import { useState } from "react";
 
 const navigationItems = [
   { name: "Halaman Utama", href: "/admin/dashboard" },
-  { name: "Manajemen Kelas", href: "/admin/kelas" },
 ];
 
 export default function AdminSidebar() {
@@ -63,7 +62,10 @@ export default function AdminSidebar() {
           {/* Navigation Links */}
           <nav className="mt-6 space-y-1">
             {navigationItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive =
+                item.href === "/admin/dashboard"
+                  ? pathname === "/admin/dashboard"
+                  : pathname.startsWith(item.href);
 
               return (
                 <Link
